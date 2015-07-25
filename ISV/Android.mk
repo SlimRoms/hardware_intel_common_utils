@@ -34,6 +34,8 @@ LOCAL_C_INCLUDES := \
     $(TARGET_OUT_HEADERS)/pvr/hal \
     $(call include-path-for, frameworks-native)/media/openmax
 
+LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
+
 ifeq ($(USE_MEDIASDK),true)
     LOCAL_CFLAGS += -DUSE_MEDIASDK
 endif
@@ -43,6 +45,8 @@ ifeq ($(TARGET_VPP_USE_GEN),true)
 endif
 
 LOCAL_CFLAGS += -Werror
+
+LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 include $(BUILD_SHARED_LIBRARY)
 
